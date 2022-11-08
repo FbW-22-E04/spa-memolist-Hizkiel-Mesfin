@@ -1,0 +1,100 @@
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.header {
+  background-color: teal;
+  padding: 2rem 1rem;
+  text-align: center;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.container {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.plan-input {
+  font-size: 1.8rem;
+  padding: 0.5rem 1rem;
+  width: 40rem;
+  border-radius: 5px;
+}
+
+.plan-input[type="text"] {
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.plan-input::placeholder {
+  font-family: "Josefin Sans", sans-serif;
+  opacity: 0.5;
+}
+
+.plan-input:focus {
+  background-color: #e6e6e6;
+}
+
+.list-container {
+  display: flex;
+  flex-direction: column;
+  grid: 5rem;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border: 1px solid;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s;
+}
+
+.item:hover {
+  transform: scale(1.05);
+}
+
+.radio-close {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.close {
+  cursor: pointer;
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
+.clear-all {
+  width: 10rem;
+  align-self: center;
+  font-size: 1.6rem;
+  font-family: "Josefin Sans", sans-serif;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
