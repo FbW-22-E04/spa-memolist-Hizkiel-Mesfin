@@ -1,30 +1,11 @@
 import "../App.css";
-import { useState, useReducer, useEffect } from "react";
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case "add-plan":
-      return { plans: [...state.plans, action.payload] };
-    case "delete":
-      return { plans: state.plans.filter((plan, i) => i !== action.payload) };
-
-    case "clear-all":
-      return { plans: [] };
-
-    case "data":
-      return { plans: [...action.payload] };
-
-    default:
-      return state;
-  }
-};
+import { useState, useEffect, useContext } from "react";
+import { memoContext } from "./Context";
+import Plan from "./Plan";
 
 const List = () => {
   const [plan, setPlan] = useState("");
-  const [{ plans }, dispatch] = useReducer(reducer, { plans: [] });
-  const [completed, setCompleted] = useState(false);
-
-  console.log(completed);
+  const { plans, dispatch, checked } = useContext(memoContext);
 
   useEffect(() => {
     const data = localStorage.getItem("plans");
@@ -61,20 +42,8 @@ const List = () => {
       </form>
       <div className="list-container">
         {plans?.map((plan, idx) => (
-          <div key={idx} className="item">
-            <p className={completed ? "completed" : ""}>{plan}</p>
-            <div className="radio-close">
-              <input
-                type="checkbox"
-                onChange={(e) => setCompleted(e.target.checked)}
-              />
-              <span
-                className="close"
-                onClick={() => dispatch({ type: "delete", payload: idx })}
-              >
-                X
-              </span>
-            </div>
+          <div key={idx}>
+            <Plan plan={plan} index={idx} />
           </div>
         ))}
       </div>
